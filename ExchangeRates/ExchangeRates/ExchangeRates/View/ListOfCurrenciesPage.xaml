@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:ExchangeRates"
+             x:Class="ExchangeRates.View.ListOfCurrenciesPage">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <FlexLayout Direction="Row" AlignItems="Center" JustifyContent="SpaceBetween" BackgroundColor="#797979" Padding="10,0,10,0">
+                <StackLayout>
+                    <ImageButton x:Name="quitBtn" BackgroundColor="#797979" Clicked="quitBtn_Clicked" Source="leftArrow.png" WidthRequest="30" HeightRequest="50"></ImageButton>
+                </StackLayout>
+                <StackLayout>
+                    <Label TextColor="#FFFFFF">Курсы валют</Label>
+                </StackLayout>
+                <StackLayout >
+                    <ImageButton x:Name="setBtn" BackgroundColor="#797979" Source="settingIcon.png" WidthRequest="30" HeightRequest="50" Clicked="setBtn_Clicked"></ImageButton>
+                </StackLayout>
+            </FlexLayout>
+            <StackLayout Grid.Row="1" BackgroundColor="AliceBlue" Margin="0,-6,0,0">
+                <StackLayout Orientation="Horizontal"  BackgroundColor="#EFEFF4" HeightRequest="40">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  >
+                        <Label x:Name="todayDateLbl" TextColor="Black" Padding="0,0,5,0"></Label>
+                        <Label x:Name="tomorrowDateLbl" TextColor="Black" Padding="0,0,15,0"></Label>
+                    </StackLayout>
+                 </StackLayout>
+                <CollectionView x:Name="currencyCollectView" Margin="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10,0,20,0" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Margin="0">
+                                    <Label Text="{Binding CharCode}" FontSize="15" FontAttributes="Bold" TextColor="black"></Label>
+                                    <StackLayout Orientation="Horizontal" Margin="0,-10,0,0" WidthRequest="200">
+                                        <Label Text="{Binding Scale}" TextColor="Gray"></Label>
+                                        <Label Text="{Binding Name}" TextColor="Gray"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Label Text="{Binding Rate}" TextColor="Black" WidthRequest="50" ></Label>
+                                    <Label Text="{Binding RateTomorrow}" TextColor="Black" Margin="10,0,0,0"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

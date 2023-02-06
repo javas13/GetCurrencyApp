@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExchangeRates.View.CurrenciesSettingsPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <FlexLayout Direction="Row" AlignItems="Center" JustifyContent="SpaceBetween" BackgroundColor="#797979" Padding="10,0,10,0">
+                <StackLayout>
+                    <ImageButton BackgroundColor="#797979" Source="leftArrow.png" x:Name="backBtn" Clicked="backBtn_Clicked" WidthRequest="30" HeightRequest="50"></ImageButton>
+                </StackLayout>
+                <StackLayout>
+                    <Label TextColor="#FFFFFF">Настройка валют</Label>
+                </StackLayout>
+                <StackLayout>
+                    <ImageButton BackgroundColor="#797979" x:Name="checkBtn" Clicked="checkBtn_Clicked" Source="checkMark.png" WidthRequest="30" HeightRequest="50"></ImageButton>
+                </StackLayout>
+            </FlexLayout>
+            <StackLayout Grid.Row="1" BackgroundColor="AliceBlue" Margin="0,-6,0,0">
+                <StackLayout Orientation="Horizontal"  BackgroundColor="#EFEFF4" HeightRequest="40"></StackLayout>
+                <CollectionView x:Name="currencyCollectView" Margin="0" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10,0,20,0" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Margin="0,0,0,10">
+                                    <Label Text="{Binding CharCode}" FontSize="15" FontAttributes="Bold" TextColor="black"></Label>
+                                    <StackLayout Orientation="Horizontal" Margin="0,-10,0,0">
+                                        <Label Text="{Binding Scale}" TextColor="Gray"></Label>
+                                        <Label Text="{Binding Name}" TextColor="Gray"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Switch x:Name="showSwitch" IsToggled="{Binding SwitchOnOrOff}" BackgroundColor="LightGray"></Switch>
+                                    <ImageButton x:Name="moveBtn" Source="moveButtonPng.png" WidthRequest="30" HeightRequest="50" BackgroundColor="GhostWhite" Clicked="moveBtn_Clicked"></ImageButton>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
